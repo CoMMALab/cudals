@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cudals"
+version = "0.1.0"
+description = "jaxls-shaped nonlinear least squares, compiled to one CUDA kernel"
+readme = "README.md"
+license = { text="MIT" }
+requires-python = ">=3.10"
+dependencies = [
+    "jax==0.10.2",
+    "jaxlib==0.10.2",
+    "jaxlie==1.5.0",
+    "numpy==2.3.4",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+cudals = ["kernels/*.cu", "kernels/*.cuh", "kernels/glass/LICENSE", "kernels/glass/**/*.cuh"]
